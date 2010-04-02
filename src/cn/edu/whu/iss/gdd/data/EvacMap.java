@@ -18,15 +18,19 @@ import cn.edu.whu.iss.gdd.data.Path;
  */
 public interface EvacMap {
 	
-	void setExits(Map<Integer, Location> exits);
+	// void setExits(Map<Integer, Location> exits);
 	
-	void setPaths(Map<Integer, Path> paths);
+	// void setPaths(Map<Integer, Path> paths);
 	
+<<<<<<< HEAD
 	void setPoints(Map<Integer, Location> points);
 
 	boolean hasExit(Location location);
 
 	int getPathIdByLocations(Location l1, Location l2);
+=======
+	// void setPoints(Map<Integer, Location> points);
+>>>>>>> 2270c3f... M is done, waiting for test
 	
 	Map<Integer, Path> getPaths();
 	

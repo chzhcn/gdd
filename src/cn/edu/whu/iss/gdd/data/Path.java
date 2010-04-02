@@ -25,20 +25,22 @@ public class Path {
 
 	double length;
 
-	int traffic;
-
+	double weight = -1;
 	
-	public Path(int id, Location l1, Location l2, double length, int traffic) {
+	/**
+	 * Creates a new <code>Path</code> instance.
+	 *
+	 */
+	public Path() {
+
+	}
+
+	public Path(int id, Location l1, Location l2, double length) {
 		this.id = id;
 		this.l1 = l1;
 		this.l2 = l2;
 		// this.name = name;
 		this.length = length;
-		this.traffic = traffic;
-	}
-
-	public Path(Path p) {
-		this(p.getId(), p.getL1(), p.getL2(), p.getLength(), p.getTraffic());
 	}
 
 
@@ -118,24 +120,25 @@ public class Path {
 	}
 
 	/**
-	 * Gets the value of traffic
+	 * Gets the value of weight
 	 *
-	 * @return the value of traffic
+	 * @return the value of weight
 	 */
-	public final int getTraffic() {
-		return this.traffic;
+	public final double getWeight() {
+		return this.weight;
 	}
 
 	/**
-	 * Sets the value of traffic
+	 * Sets the value of weight
 	 *
-	 * @param argTraffic Value to assign to this.traffic
+	 * @param argWeight Value to assign to this.weight
 	 */
-	public final void setTraffic(final int argTraffic) {
-		this.traffic = argTraffic;
+	public final void setWeight(final double argWeight) {
+		this.weight = argWeight;
 	}
 
 	public final Location getOtherEnd(final Location location) {
+<<<<<<< HEAD
 		return location.getId() == l1.getId() ? l2 : l1;
 	}
 
@@ -163,5 +166,9 @@ public class Path {
 		} else {
 			return false;
 		}
+=======
+		return location == l1 ? l2 : l1;
+>>>>>>> 2270c3f... M is done, waiting for test
 	}
+	
 }

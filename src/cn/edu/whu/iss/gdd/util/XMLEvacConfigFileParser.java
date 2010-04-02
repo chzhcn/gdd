@@ -58,9 +58,14 @@ public class XMLEvacConfigFileParser implements EvacConfigFileParser {
 				int id = Integer.parseInt(path.getAttributeValue("id"));
 				int l1 = Integer.parseInt(path.getChildElements("point").get(0).getValue());
 				int l2 = Integer.parseInt(path.getChildElements("point").get(1).getValue());
+<<<<<<< HEAD
 				double length = Double.parseDouble(path.getFirstChildElement("length").getValue());
 				int traffic = Integer.parseInt(path.getFirstChildElement("traffic").getValue());
 				pths.put(id, new Path(id, pnts.get(l1), pnts.get(l2), length, traffic));	
+=======
+				double length = Double.parseDouble(path.getFirstChildElement("length").getValue());				
+				pths.put(id, new Path(id, pnts.get(l1), pnts.get(l2), length));	
+>>>>>>> 2270c3f... M is done, waiting for test
 			}
 
 		} catch (ParsingException e) {

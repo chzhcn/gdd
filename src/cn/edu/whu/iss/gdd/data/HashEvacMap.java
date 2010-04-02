@@ -2,8 +2,9 @@ package cn.edu.whu.iss.gdd.data;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Iterator;
 
+import cn.edu.whu.iss.gdd.data.Location;
+import cn.edu.whu.iss.gdd.data.Path;
 
 /**
  * Describe class HashEvacMap here.
@@ -46,8 +47,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setExits(final Map<Integer, Location> exits) {
-		this.exits = (HashMap<Integer, Location>)exits;
+	public final void setExits(final HashMap<Integer, Location> exits) {
+		this.exits = exits;
 	}
 
 	/**
@@ -55,8 +56,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setPaths(final Map<Integer, Path> paths) {
-		this.paths = (HashMap<Integer, Path>)paths;
+	public final void setPaths(final HashMap<Integer, Path> paths) {
+		this.paths = paths;
 	}
 
 	/**
@@ -64,8 +65,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setPoints(final Map<Integer, Location> points) {
-		this.points = (HashMap<Integer, Location>)points;
+	public final void setPoints(final HashMap<Integer, Location> points) {
+		this.points = points;
 	}
 
 	/**
@@ -95,6 +96,7 @@ public class HashEvacMap implements EvacMap {
 		return exits;
 	}
 
+<<<<<<< HEAD
 	public boolean hasExit(Location location) {
 		Iterator<Location> it = exits.values().iterator();
 		while(it.hasNext()) {
@@ -116,4 +118,7 @@ public class HashEvacMap implements EvacMap {
 		}
 		return -1;
 	}
+=======
+	
+>>>>>>> 2270c3f... M is done, waiting for test
 }

@@ -21,7 +21,7 @@ public interface EvacProcessor {
 	 * @param point a <code>Location</code> value
 	 * @return an <code>EvacRoute</code> value the evacuation route the algorithm pick up for the evacuatee
 	 */
-	EvacRoute computeEvacRoute(Evacuatable evacuatable);
+	EvacRoute computeEvacRoute(Location point);
 
 	void setEvacMap(EvacMap evacMap);
 	

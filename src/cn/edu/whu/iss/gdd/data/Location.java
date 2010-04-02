@@ -1,6 +1,5 @@
 package cn.edu.whu.iss.gdd.data;
 
-
 /**
  * Describe class Location here.
  *
@@ -33,10 +32,6 @@ public class Location {
 		this.lng = lng;
 	}
 
-	public Location(Location location) {
-		this(location.getId(), location.getLat(), location.getLng());
-	}
-	
 	public double getLat() {
 		return lat;
 	}

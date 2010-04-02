@@ -1,14 +1,16 @@
 package cn.edu.whu.iss.gdd.core;
 
-import java.io.File;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
 import cn.edu.whu.iss.gdd.data.EvacMap;
+import cn.edu.whu.iss.gdd.util.EvacConfigFileParser;
+import java.io.File;
 import cn.edu.whu.iss.gdd.data.EvacRoute;
 import cn.edu.whu.iss.gdd.data.Location;
-import cn.edu.whu.iss.gdd.util.EvacConfigFileParser;
+
+// public abstract EvacBackEnd implements Evacuatable {
 
 /**
  * the general interface for Evacuation back-end
@@ -49,14 +51,13 @@ public class EvacBackEnd implements Observer {
 	 * get BackEnd to prepare, like loading the data, remote backend watching the port, etc
 	 *
 	 */
-	static void init(File fiel, EvacConfigFileParser ecfp, EvacProcessor evacProcessor, Map<Integer, Location> exits) {
+	static void init(File fiel, EvacConfigFileParser ecfp, EvacProcessor evacProcessor) {
 		// evacMap = ecfp.loadEvacMap(file);set
 		EvacBackEnd.file = file;
 		// LocalEvacBackEnd.evacMap = evacMap;
 		EvacBackEnd.ecfp = ecfp;
 		EvacBackEnd.evacProcessor = evacProcessor;
 		evacMap = ecfp.loadEvacMap(file);
-		evacMap.setExits(exits);
 		evacProcessor.setEvacMap(evacMap);
 	}
 	
@@ -70,7 +71,7 @@ public class EvacBackEnd implements Observer {
 	 */
 	public final void update(final Observable observable, final Object object) {
 		if (observable instanceof Evacuatable) {
-			EvacRoute er  = evacProcessor.computeEvacRoute((Evacuatable)observable);
+			EvacRoute er  = evacProcessor.computeEvacRoute((Location)object);
 			ea.setRoute(er);
 		}
 
@@ -169,8 +170,6 @@ public class EvacBackEnd implements Observer {
 		EvacBackEnd.evacProcessor = argEvacProcessor;
 	}
 
-	public static final Map<Integer, Location> getExits() {
-		return evacMap.getExits();
-	}
+
 	
 }
