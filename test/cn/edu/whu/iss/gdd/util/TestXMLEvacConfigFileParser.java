@@ -3,6 +3,7 @@ package cn.edu.whu.iss.gdd.util;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 import cn.edu.whu.iss.gdd.data.EvacMap;
@@ -10,14 +11,13 @@ import cn.edu.whu.iss.gdd.data.Location;
 import cn.edu.whu.iss.gdd.data.Path;
 import nu.xom.Builder;
 import nu.xom.Document;
+import nu.xom.Element;
 import nu.xom.Elements;
+import nu.xom.ParsingException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import nu.xom.Element;
-import java.io.IOException;
-import nu.xom.ParsingException;
 
 /**
  *  Unit Test for class TestXMLConfigFileParser
@@ -47,7 +47,7 @@ public class  TestXMLEvacConfigFileParser {
 		pths = new HashMap<Integer, Path>();
 		parser = new Builder();
 		try {
-			doc = parser.build(new File("build/data.txt"));
+			doc = parser.build(new File("build/data.xml"));
 		} catch (ParsingException e) {
 			System.err.println("xml malformed");
 		} catch (IOException e) {
@@ -100,8 +100,9 @@ public class  TestXMLEvacConfigFileParser {
 			int id = Integer.parseInt(path.getAttributeValue("id"));
 			int l1 = Integer.parseInt(path.getChildElements("point").get(0).getValue());
 			int l2 = Integer.parseInt(path.getChildElements("point").get(1).getValue());
-			double length = Double.parseDouble(path.getFirstChildElement("length").getValue());				
-			pths.put(id, new Path(id, pnts.get(l1), pnts.get(l2), length));	
+			double length = Double.parseDouble(path.getFirstChildElement("length").getValue());
+			int traffic = Integer.parseInt(path.getAttributeValue("traffic"));
+			pths.put(id, new Path(id, pnts.get(l1), pnts.get(l2), length, traffic));	
 		}
 		// assertEquals(em.getPoints().size(), 14);
 		// assertEquals(em.getPaths().size(), 17);

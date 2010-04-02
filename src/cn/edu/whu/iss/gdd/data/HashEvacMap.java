@@ -2,9 +2,8 @@ package cn.edu.whu.iss.gdd.data;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Iterator;
 
-import cn.edu.whu.iss.gdd.data.Location;
-import cn.edu.whu.iss.gdd.data.Path;
 
 /**
  * Describe class HashEvacMap here.
@@ -47,8 +46,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setExits(final HashMap<Integer, Location> exits) {
-		this.exits = exits;
+	public final void setExits(final Map<Integer, Location> exits) {
+		this.exits = (HashMap<Integer, Location>)exits;
 	}
 
 	/**
@@ -56,8 +55,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setPaths(final HashMap<Integer, Path> paths) {
-		this.paths = paths;
+	public final void setPaths(final Map<Integer, Path> paths) {
+		this.paths = (HashMap<Integer, Path>)paths;
 	}
 
 	/**
@@ -65,8 +64,8 @@ public class HashEvacMap implements EvacMap {
 	 *
 	 * @param map a <code>Map</code> value
 	 */
-	public final void setPoints(final HashMap<Integer, Location> points) {
-		this.points = points;
+	public final void setPoints(final Map<Integer, Location> points) {
+		this.points = (HashMap<Integer, Location>)points;
 	}
 
 	/**
@@ -96,5 +95,25 @@ public class HashEvacMap implements EvacMap {
 		return exits;
 	}
 
-	
+	public boolean hasthisExitLocation(Location location) {
+		Iterator<Location> it = exits.values().iterator();
+		while(it.hasNext()) {
+			Location l = it.next();
+			if (location.getId() == l.getId()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public int getPathIdByLocations(Location l1, Location l2) {
+		Iterator<Path> it = paths.values().iterator();
+		while(it.hasNext()) {
+			Path p = it.next();
+			if (p.hasLocations(l1, l2)) {
+				return p.getId();
+			}
+		}
+		return -1;
+	}
 }

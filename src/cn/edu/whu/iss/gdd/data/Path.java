@@ -25,22 +25,20 @@ public class Path {
 
 	double length;
 
-	double weight = -1;
+	int traffic;
+
 	
-	/**
-	 * Creates a new <code>Path</code> instance.
-	 *
-	 */
-	public Path() {
-
-	}
-
-	public Path(int id, Location l1, Location l2, double length) {
+	public Path(int id, Location l1, Location l2, double length, int traffic) {
 		this.id = id;
 		this.l1 = l1;
 		this.l2 = l2;
 		// this.name = name;
 		this.length = length;
+		this.traffic = traffic;
+	}
+
+	public Path(Path p) {
+		this(p.getId(), p.getL1(), p.getL2(), p.getLength(), p.getTraffic());
 	}
 
 
@@ -120,25 +118,49 @@ public class Path {
 	}
 
 	/**
-	 * Gets the value of weight
+	 * Gets the value of traffic
 	 *
-	 * @return the value of weight
+	 * @return the value of traffic
 	 */
-	public final double getWeight() {
-		return this.weight;
+	public final int getTraffic() {
+		return this.traffic;
 	}
 
 	/**
-	 * Sets the value of weight
+	 * Sets the value of traffic
 	 *
-	 * @param argWeight Value to assign to this.weight
+	 * @param argTraffic Value to assign to this.traffic
 	 */
-	public final void setWeight(final double argWeight) {
-		this.weight = argWeight;
+	public final void setTraffic(final int argTraffic) {
+		this.traffic = argTraffic;
 	}
 
 	public final Location getOtherEnd(final Location location) {
-		return location == l1 ? l2 : l1;
+		return location.getId() == l1.getId() ? l2 : l1;
 	}
-	
+
+	public final boolean hasLocation(Location location) {
+		if (l1.getId() == location.getId()) {
+			return true;
+		} else if (l2.getId() == location.getId()) {
+			return true;
+		}
+		return false;
+	}
+
+	// public  void decrementTrafficByOne() {
+	// 	traffic--;
+	// }
+
+	// public  void incrementTrafficByOne() {
+	// 	traffic++;
+	// }
+
+	public boolean hasLocations(Location s, Location d) {
+		if (s.getId() == l1.getId() && d.getId() == l2.getId()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

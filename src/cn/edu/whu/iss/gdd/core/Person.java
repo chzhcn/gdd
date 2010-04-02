@@ -59,15 +59,18 @@ public class Person extends Observable implements Evacuatable {
 	public void evacuate() {
 		ea.init();
 		addObserver(ea.getEvacBackEnd());
+		
 		setChanged();
-		notifyObservers(currentLocation);
+		notifyObservers();
+		
 		pastRoute = new EvacRoute();
 		while (null != route.peekFirst()) {
 			Path p  = route.pollFirst();
 			currentLocation = p.getOtherEnd(currentLocation);
+			currentPath = p;
 			pastRoute.push(p);
 			setChanged();
-			notifyObservers(currentLocation);
+			notifyObservers();
 		}
 
 	}
@@ -171,8 +174,8 @@ public class Person extends Observable implements Evacuatable {
 		this.currentPath = argCurrentPath;
 	}
 		
-	// Map<Integer, Location> getExits() {
-		
-	// }
+	public Map<Integer, Location> getExits() {
+		return ea.getExits();
+	}
 
 }

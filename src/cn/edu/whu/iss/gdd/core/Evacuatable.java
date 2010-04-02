@@ -22,15 +22,18 @@ public interface Evacuatable {
 	void evacuate();
 	
 	void setRoute(EvacRoute evacRoute);
-	// Location getCurrentLocation();
 
-	// Path getCurrentPath();
+	double getVelocity();
+	
+	Location getCurrentLocation();
+
+	Path getCurrentPath();
 
 	// EvacRoute getRoute();
 
 	// EvacRoute getPastRoute();
 	
-	// Map<Location> getExit();
+	Map<Integer, Location> getExits();
 	
 }
 

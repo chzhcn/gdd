@@ -1,6 +1,8 @@
 package cn.edu.whu.iss.gdd.core;
 
 import cn.edu.whu.iss.gdd.data.EvacRoute;
+import java.util.Map;
+import cn.edu.whu.iss.gdd.data.Location;
 
 /**
  * Describe interface EvacAssistant here.
@@ -17,4 +19,5 @@ public interface EvacAssistant {
 	EvacBackEnd getEvacBackEnd();
 	Evacuatable getEvacuatable();
 	void setRoute(EvacRoute evacRoute);
+	Map<Integer, Location> getExits();
 }
