@@ -157,7 +157,8 @@ public class Path {
 	// }
 
 	public boolean hasLocations(Location s, Location d) {
-		if (s.getId() == l1.getId() && d.getId() == l2.getId()) {
+		if ( (s.getId() == l1.getId() && d.getId() == l2.getId())
+			 || (s.getId() == l2.getId() && d.getId() == l1.getId()) ) {
 			return true;
 		} else {
 			return false;

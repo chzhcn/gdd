@@ -95,7 +95,7 @@ public class HashEvacMap implements EvacMap {
 		return exits;
 	}
 
-	public boolean hasthisExitLocation(Location location) {
+	public boolean hasExit(Location location) {
 		Iterator<Location> it = exits.values().iterator();
 		while(it.hasNext()) {
 			Location l = it.next();

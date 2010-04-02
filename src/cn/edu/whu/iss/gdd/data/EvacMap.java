@@ -24,7 +24,7 @@ public interface EvacMap {
 	
 	void setPoints(Map<Integer, Location> points);
 
-	boolean hasthisExitLocation(Location location);
+	boolean hasExit(Location location);
 
 	int getPathIdByLocations(Location l1, Location l2);
 	

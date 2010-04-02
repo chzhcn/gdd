@@ -173,7 +173,7 @@ public class DijkstraEvacProcessor implements EvacProcessor {
 		}
 		node.setVisited(true);
 		minNode.setPrevNode(node);
-		if (evacMap.hasthisExitLocation(minNode)) {
+		if (evacMap.hasExit(minNode)) {
 			return minNode;			
 		} else {
 			return calcuateOneNode(minNode, velocity);

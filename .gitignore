@@ -2,4 +2,5 @@ build.properties
 build/*
 dist/*
 prj.el
+report/*
 *~
